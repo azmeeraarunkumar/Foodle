@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-secondary font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-h1 {
+    @apply text-[24px] leading-[32px] font-bold;
+  }
+  
+  .text-h2 {
+    @apply text-[20px] leading-[28px] font-semibold;
+  }
+  
+  .text-h3 {
+    @apply text-[16px] leading-[24px] font-semibold;
+  }
+  
+  .text-body {
+    @apply text-[14px] leading-[20px] font-normal;
+  }
+  
+  .text-body-small {
+    @apply text-[12px] leading-[16px] font-normal;
+  }
+  
+  .text-caption {
+    @apply text-[10px] leading-[14px] font-medium;
+  }
+  
+  .text-button {
+    @apply text-[14px] leading-[20px] font-semibold;
+  }
+  
+  .text-otp {
+    @apply text-[48px] leading-[56px] font-bold tracking-[4px];
+  }
+}
