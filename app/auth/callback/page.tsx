@@ -14,6 +14,7 @@ export default function AuthCallback() {
     async function handleCallback() {
         const supabase = createClient();
 
+
         try {
             const { data: { session }, error: sessionError } = await supabase.auth.getSession();
 
@@ -34,21 +35,23 @@ export default function AuthCallback() {
 
             if (!existingUser) {
                 // Create new user record
-                const { error: insertError } = await supabase
+                const newUser = {
+                    id: user.id,
+                    email: user.email!,
+                    name: user.user_metadata.full_name || user.email!.split('@')[0],
+                    role: 'student',
+                    avatar_url: user.user_metadata.avatar_url,
+                };
+
+                const { error: insertError } = await (supabase
                     .from('users')
-                    .insert({
-                        id: user.id,
-                        email: user.email!,
-                        name: user.user_metadata.full_name || user.email!.split('@')[0],
-                        role: 'student',
-                        avatar_url: user.user_metadata.avatar_url,
-                    });
+                    .insert(newUser as any));
 
                 if (insertError) throw insertError;
             }
 
             // Redirect based on role
-            if (existingUser?.role === 'vendor') {
+            if ((existingUser as any)?.role === 'vendor') {
                 router.push('/vendor/dashboard');
             } else {
                 router.push('/home');
