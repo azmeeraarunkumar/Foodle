@@ -114,10 +114,10 @@ export default function VendorDashboard() {
         if (!stall) return;
 
         const supabase = createClient();
-        const { error } = await supabase
+        const { error } = await (supabase
             .from('stalls')
-            .update({ is_open: isOpen })
-            .eq('id', stall.id);
+            .update({ is_open: isOpen } as any)
+            .eq('id', stall.id));
 
         if (!error) {
             setStall({ ...stall, is_open: isOpen });
@@ -129,10 +129,10 @@ export default function VendorDashboard() {
         setIsUpdatingCap(true);
 
         const supabase = createClient();
-        const { error } = await supabase
+        const { error } = await (supabase
             .from('stalls')
-            .update({ order_cap: orderCap })
-            .eq('id', stall.id);
+            .update({ order_cap: orderCap } as any)
+            .eq('id', stall.id));
 
         if (!error) {
             setStall({ ...stall, order_cap: orderCap });
@@ -142,10 +142,10 @@ export default function VendorDashboard() {
 
     async function updateOrderStatus(orderId: string, newStatus: string) {
         const supabase = createClient();
-        const { error } = await supabase
+        const { error } = await (supabase
             .from('orders')
-            .update({ status: newStatus })
-            .eq('id', orderId);
+            .update({ status: newStatus } as any)
+            .eq('id', orderId));
 
         if (!error) {
             // Optimistic update

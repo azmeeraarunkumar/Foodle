@@ -55,10 +55,10 @@ export default function VendorMenuPage() {
 
     async function toggleAvailability(itemId: string, currentStatus: boolean) {
         const supabase = createClient();
-        const { error } = await supabase
+        const { error } = await (supabase
             .from('menu_items')
-            .update({ is_available: !currentStatus })
-            .eq('id', itemId);
+            .update({ is_available: !currentStatus } as any)
+            .eq('id', itemId));
 
         if (!error) {
             setItems(items.map(item =>
@@ -89,8 +89,8 @@ export default function VendorMenuPage() {
                         key={cat}
                         onClick={() => setSelectedCategory(cat)}
                         className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${selectedCategory === cat
-                                ? 'bg-primary text-gray-900'
-                                : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                            ? 'bg-primary text-gray-900'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
                             }`}
                     >
                         {cat}

@@ -102,7 +102,7 @@ export default function CartPage() {
             for (const [stallId, stallItems] of Object.entries(itemsByStall)) {
                 const stallTotal = stallItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-                const { error } = await supabase
+                const { error } = await (supabase
                     .from('orders')
                     .insert({
                         user_id: user.id,
@@ -114,7 +114,7 @@ export default function CartPage() {
                         items: stallItems, // Storing JSON of items
                         special_instructions: specialInstructions,
                         otp_code: otp
-                    });
+                    } as any));
 
                 if (error) throw error;
             }

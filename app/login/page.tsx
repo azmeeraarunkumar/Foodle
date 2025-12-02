@@ -94,14 +94,14 @@ export default function LoginPage() {
                     console.log('✅ User created:', data.user.id);
 
                     // Create user record in database
-                    const { error: dbError } = await supabase
+                    const { error: dbError } = await (supabase
                         .from('users')
                         .insert({
                             id: data.user.id,
                             email: data.user.email!,
                             name: name,
                             role: 'student',
-                        });
+                        } as any));
 
                     console.log('🔵 Database insert result:', { dbError });
 
