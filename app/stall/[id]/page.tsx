@@ -58,7 +58,7 @@ export default function StallMenuPage() {
     }
 
     function getCategories() {
-        const categories = ['All', ...Array.from(new Set(menuItems.map(item => item.category).filter((c): c is string => !!c)))];
+        const categories = ['All', ...Array.from(new Set(menuItems.map(item => item.category).filter(Boolean) as string[]))];
         return categories;
     }
 
