@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, UtensilsCrossed, History, LogOut, Store } from 'lucide-react';
+import { LayoutDashboard, UtensilsCrossed, History, LogOut, Store, Settings } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 
@@ -33,8 +33,8 @@ export function VendorNav() {
                 <Link
                     href="/vendor/dashboard"
                     className={`flex flex-col md:flex-row items-center md:gap-3 p-2 md:px-4 md:py-3 rounded-lg transition-colors ${isActive('/vendor/dashboard')
-                            ? 'text-primary md:bg-gray-800'
-                            : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
+                        ? 'text-primary md:bg-gray-800'
+                        : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
                         }`}
                 >
                     <LayoutDashboard className="h-6 w-6" />
@@ -44,8 +44,8 @@ export function VendorNav() {
                 <Link
                     href="/vendor/menu"
                     className={`flex flex-col md:flex-row items-center md:gap-3 p-2 md:px-4 md:py-3 rounded-lg transition-colors ${isActive('/vendor/menu')
-                            ? 'text-primary md:bg-gray-800'
-                            : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
+                        ? 'text-primary md:bg-gray-800'
+                        : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
                         }`}
                 >
                     <UtensilsCrossed className="h-6 w-6" />
@@ -53,23 +53,23 @@ export function VendorNav() {
                 </Link>
 
                 <Link
-                    href="/vendor/history"
-                    className={`flex flex-col md:flex-row items-center md:gap-3 p-2 md:px-4 md:py-3 rounded-lg transition-colors ${isActive('/vendor/history')
-                            ? 'text-primary md:bg-gray-800'
-                            : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
+                    href="/vendor/settings"
+                    className={`flex flex-col md:flex-row items-center md:gap-3 p-2 md:px-4 md:py-3 rounded-lg transition-colors ${isActive('/vendor/settings')
+                        ? 'text-primary md:bg-gray-800'
+                        : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
                         }`}
                 >
-                    <History className="h-6 w-6" />
-                    <span className="text-[10px] md:text-sm font-medium mt-1 md:mt-0">History</span>
+                    <Settings className="h-6 w-6" />
+                    <span className="text-[10px] md:text-sm font-medium mt-1 md:mt-0">Settings</span>
                 </Link>
 
-                {/* Mobile Logout (Hidden) / Desktop Logout (Visible) */}
+                {/* Logout Button - Now visible on mobile */}
                 <button
                     onClick={handleLogout}
-                    className="hidden md:flex w-full items-center gap-3 p-2 px-4 py-3 rounded-lg text-red-400 hover:bg-red-500/10 transition-colors mt-auto"
+                    className="flex flex-col md:flex-row items-center md:gap-3 p-2 md:px-4 md:py-3 rounded-lg text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors md:mt-auto md:w-full"
                 >
                     <LogOut className="h-6 w-6" />
-                    <span className="text-sm font-medium">Sign Out</span>
+                    <span className="text-[10px] md:text-sm font-medium mt-1 md:mt-0">Logout</span>
                 </button>
             </div>
         </nav>
