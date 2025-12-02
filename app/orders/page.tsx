@@ -88,8 +88,8 @@ export default function OrdersPage() {
                     <button
                         onClick={() => setActiveTab('active')}
                         className={`flex-1 py-2 text-sm font-medium rounded-lg transition-all ${activeTab === 'active'
-                                ? 'bg-white text-primary shadow-sm'
-                                : 'text-gray-500 hover:text-gray-700'
+                            ? 'bg-white text-primary shadow-sm'
+                            : 'text-gray-500 hover:text-gray-700'
                             }`}
                     >
                         Active ({activeOrders.length})
@@ -97,8 +97,8 @@ export default function OrdersPage() {
                     <button
                         onClick={() => setActiveTab('history')}
                         className={`flex-1 py-2 text-sm font-medium rounded-lg transition-all ${activeTab === 'history'
-                                ? 'bg-white text-primary shadow-sm'
-                                : 'text-gray-500 hover:text-gray-700'
+                            ? 'bg-white text-primary shadow-sm'
+                            : 'text-gray-500 hover:text-gray-700'
                             }`}
                     >
                         History
@@ -148,7 +148,7 @@ export default function OrdersPage() {
                                     <Badge variant={
                                         order.status === 'ready' ? 'success' :
                                             order.status === 'preparing' ? 'warning' :
-                                                order.status === 'completed' ? 'default' : 'outline'
+                                                'default'
                                     }>
                                         {order.status.toUpperCase()}
                                     </Badge>
@@ -171,7 +171,7 @@ export default function OrdersPage() {
                                     {activeTab === 'active' && (
                                         <Button
                                             size="sm"
-                                            variant={order.status === 'ready' ? 'primary' : 'outline'}
+                                            variant={order.status === 'ready' ? 'primary' : 'secondary'}
                                             onClick={() => router.push(`/orders/${order.id}`)}
                                         >
                                             {order.status === 'ready' ? 'Collect Order' : 'Track Status'}
