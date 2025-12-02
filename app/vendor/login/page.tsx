@@ -46,15 +46,15 @@ export default function VendorLoginPage() {
 
             if (data.user) {
                 // Verify this user is actually a vendor
-                const { data: userRole, error: roleError } = await supabase
+                const { data: userRole, error: roleError } = await (supabase
                     .from('users')
                     .select('role')
                     .eq('id', data.user.id)
-                    .single();
+                    .single()) as any;
 
                 if (roleError) throw roleError;
 
-                if (userRole?.role !== 'vendor') {
+                if ((userRole as any)?.role !== 'vendor') {
                     throw new Error('Access denied. This portal is for vendors only.');
                 }
 

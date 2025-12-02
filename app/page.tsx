@@ -23,11 +23,11 @@ export default function SplashScreen() {
 
         if (session) {
             // Check user role
-            const { data: user } = await supabase
+            const { data: user } = await (supabase
                 .from('users')
                 .select('role')
                 .eq('id', session.user.id)
-                .single();
+                .single()) as any;
 
             if (user?.role === 'vendor') {
                 router.push('/vendor/dashboard');
